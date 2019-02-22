@@ -1,0 +1,10 @@
+{
+  "aString": "this is a string",
+  "bInt": 1234,
+  "cNested": {
+    "nestedString": "this is a nested string",
+    "nestedInt": 2345
+  },
+  "dList": ["a", "b", "c"],
+  "eList": [3, 2, 1992]
+}
