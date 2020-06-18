@@ -19,6 +19,20 @@ public class BasicUsage {
         }
     }
 
+    public static class NestedElement {
+        private String nestedString;
+
+        private int nestedInt;
+
+        public String getNestedString() {
+            return nestedString;
+        }
+
+        public int getNestedInt() {
+            return nestedInt;
+        }
+    }
+
     private String aString;
 
     private int bInt;
@@ -28,6 +42,8 @@ public class BasicUsage {
     private List<String> dList;
 
     private ArrayList<Long> eList;
+
+    private List<NestedElement> fList;
 
     public String getaString() {
         return aString;
@@ -47,5 +63,9 @@ public class BasicUsage {
 
     public ArrayList<Long> geteList() {
         return eList;
+    }
+
+    public List<NestedElement> getfList() {
+        return fList;
     }
 }

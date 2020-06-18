@@ -7,6 +7,8 @@ import org.json.simple.JSONValue;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,12 +58,23 @@ public class ConfigLoader {
         // Add initializer for List
         addInitializer(List.class, (object, field, value) -> {
             assertClass(JSONArray.class, value.getClass());
-
             JSONArray arr = (JSONArray) value;
+
+            // Get list type
+            Class<?> listType;
+            try {
+                ParameterizedType type = (ParameterizedType) field.getGenericType();
+                listType = (Class<?>) type.getActualTypeArguments()[0];
+            } catch (Exception e) {
+                listType = null;
+            }
 
             List list = new ArrayList();
 
             for (Object obj : arr) {
+                if (obj instanceof JSONObject && listType != null) {
+                    obj = inject(listType, (JSONObject) obj);
+                }
                 list.add(obj);
             }
 

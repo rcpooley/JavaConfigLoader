@@ -6,5 +6,15 @@
     "nestedInt": 2345
   },
   "dList": ["a", "b", "c"],
-  "eList": [3, 2, 1992]
+  "eList": [3, 2, 1992],
+  "fList": [
+    {
+      "nestedString": "el0string",
+      "nestedInt": 654
+    },
+    {
+      "nestedString": "el1string",
+      "nestedInt": 322
+    }
+  ]
 }
